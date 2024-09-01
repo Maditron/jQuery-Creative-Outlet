@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solo - Creative Website</title>
+    <link rel="icon" type="image/jpg" href="./icon.jpg"> <!--favicon-->
+    <link rel="stylesheet" href="./OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css"> <!--the main container of the slider should have owl-carousel class-->
+    <link rel="stylesheet" href="./OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css">
+    <script src="./code.jquery.com_jquery-3.7.0.js"></script>
+    <script src="./OwlCarousel2-2.3.4/dist/owl.carousel.js"></script>
+    <script src="./OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
+    <script src="./imakewebthings-waypoints-34d9f6d/lib/jquery.waypoints.min.js"></script>
+    <link rel="stylesheet" href="./Responsive-Tabs-master/css/responsive-tabs.css">
+    <script src="./Responsive-Tabs-master/js/jquery.responsiveTabs.min.js"></script>
+    <script src="./unpkg.com_isotope-layout@3.0.6_dist_isotope.pkgd.min.js"></script>
+    <link rel="stylesheet" href="./Magnific-Popup-master/dist/magnific-popup.css">
+    <script src="./Magnific-Popup-master/dist/jquery.magnific-popup.min.js"></script>
+    <script src="./jquery.counterup-master/jquery.counterup.min.js"></script>
+    <script src="./gsgd.co.uk_sandbox_jquery_easing_jquery.easing.1.3.js"></script>
+    <script src="/WOW-master/dist/wow.min.js"></script>
+    <link rel="stylesheet" href="/animate.css-main/animate.css"> <!-- you can simply add animate.css classes to elements and set animation delay and duration in your own css code by id -->
+</head>
+<style>
+    body{
+        margin: 0;
+    }
+    .preloader{
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: white;
+        z-index: 9999;
+    }
+    .status{
+        background-image: url("/Fidget-spinner.gif");
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 80px;
+        height: 80px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-top: -35px;
+        margin-left: -35px;
+    }
+    #slider{
+        border-radius: 10px;
+        width: 300px;
+        height: 400px;
+        margin: auto;
+        padding: 10px;
+    }
+    .members{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 90%;
+        height: 310px;
+        margin: auto;
+    }
+    .members>img{
+        height: 200px;
+        border-radius: 5px;
+    }
+    .progress-bar{
+        width: 50%;
+        height: 300px;
+        border: 1px solid rgba(0,0,0,0.3);
+        border-radius: 10px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+    .bar-div{
+        display: flex;
+        flex-direction: column;
+    }
+    .bar{
+        width: 300px;
+        height: 20px;
+        box-shadow: inset 0px 0px 2px rgba(0,0,0,0.3);
+        background-color: rgb(219, 219, 219);
+        display: flex;
+        border-radius: 5px;
+    }
+    .progress{
+        height: 20px;
+        background-color: rgb(9, 153, 122);
+        border-radius: 5px;
+    }
+    .bar-div>h5{
+        height: 2px;
+        font-size: 15px;
+    }
+    .tabs{
+        display: flex;
+        justify-content: space-around;
+        gap: 0 50px;
+    }
+    a{
+        text-decoration: none;
+        color: orange;
+        border-bottom: 1px solid orange;
+        padding: 5px;
+    }
+    .tab-box{
+        padding: 10px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        width: 500px;
+        border: 1px solid rgba(0,0,0,0.3);
+        border-radius: 10px;
+    }
+    .tab-box p{
+        width: 400px;
+    }
+    .container1{
+        width: 500px;
+        height: 500px;
+        /* border: 1px solid; */
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        gap: 10px 10px;
+    }
+    .grid-item{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        background-color: burlywood;
+        font-size: 20px;
+    }
+    .main-filter-box{
+        width: 500px;
+        height: 700px;
+        margin: auto;
+    }
+    .filter-btn{
+        border: 0;
+        border-bottom: 1px solid black;
+        padding: 2px;
+        background-color: white;
+        cursor: pointer;
+        margin-left: 5px;
+    }
+    .filter-btn:hover{
+        color: orange;
+        border-color: orange;
+    }
+    .active1{
+        color: orange !important;
+        border-bottom: 1px solid;
+        border-color: orange !important;
+    }
+    .slide-box{
+        width: 500px;
+        height: 100%;
+        margin: auto;
+        border: 1px solid;
+        border-radius: 10px;
+        padding: 10px;
+    }
+    .dots{
+        display: flex;
+        gap: 0 5px;
+        position: relative;
+        left: 45%;
+    }
+    .dot{
+        width: 20px;
+        height: 20px;
+        background-color: rgb(185, 185, 185);
+        border-radius: 100px;
+        cursor: pointer;
+    }
+    .dot:hover{
+        opacity: 0.7;
+    }
+    .active2{
+        background-color: rgb(44, 44, 44);
+    }
+    .slide{
+        background-color: orange;
+        padding: 10px;
+        color: white;
+        border-radius: 5px;
+    }
+    .counters{
+        width: 500px;
+        height: 200px;
+        border: 1px solid gray;
+        border-radius: 20px;
+        margin: auto;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .counter{
+        background-color: lightblue;
+        width: 100px;
+        height: 100px;
+        /* padding: 20px; */
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    header{
+        width: 100%;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px 30px;
+        background: rgb(255, 255, 255);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        z-index: 9999;
+        position: fixed;
+        transition: all 300ms linear;
+    }
+    .dark-header{
+        color: white;
+        background-color: black; 
+        transition: all 300ms linear;   
+    }
+    .dark-header>a{
+        color: white;
+    }
+    .dark-header>a:hover{
+        opacity: 0.7;
+    }
+    header>a{
+        color: black;
+        border: 0;
+    }
+    header>a:hover{
+        opacity: 0.7;
+    }
+    header>a:active{
+        opacity: 0.5 !important;
+    }
+    #main-head{
+        margin: auto;
+        text-align: center;
+        background-color: rgb(114, 114, 114);
+        padding: 20px;
+        position: relative;
+        top: 20px;
+        height: 240px;
+    }
+    #main-head>*{
+        animation-duration: 1s;
+        animation-delay: 1s;
+    }
+    #main-head>button{
+        background: rgb(255, 255, 255);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        border-radius: 20px;
+        padding: 10px;
+        cursor: pointer;
+    }
+    #main-head>button:hover{
+        background-color: orange;
+        color: white;
+        border-color: orange;
+    }
+    #main-head>button:active{
+        opacity: 0.7;
+    }
+    .filter-buttons{
+        animation-duration: 1.5s;
+        animation-delay: 0s;
+    }
+</style>
+
+<body>
+
+    <div class="preloader">
+        <div class="status"></div>
+    </div>
+
+
+    <header> <!-- use internal href + scroll spy for highlighting the nav bar elements when scrolled on their position -->
+        <a href="#home" class="smooth-scroll active1">HOME</a>
+        <a href="#responsiveTabsDemo" class="smooth-scroll">ABOUT</a>
+        <a href="#slider" class="smooth-scroll">TEAM</a>
+        <a href="#services" class="smooth-scroll">SERVICES</a>
+        <a href="#work" class="smooth-scroll">WORK</a>
+        <a href="#blog" class="smooth-scroll">BLOG</a>
+        <a href="#contact" class="smooth-scroll">CONTACT</a>
+    </header>
+
+
+    <br id="home">
+
+    <div id="main-head">
+    <h1 class="animate__fadeInDown">DIGITAL</h1> <!-- remember you have to use animation-duration and animation-delay in css to be able to see the animation of animate.css -->
+    <h1 class="animate__slideInLeft">CREATIVE <span style="color: orange;">AGENCY</span></h1>
+    <p class="animate__zoomIn">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p><br>
+    <button class="animate__zoomIn">START NOW</button>
+    </div>
+
+    
+    <br><br><br><br>
+
+
+    <div id="slider" class="owl-carousel owl-theme" name="team">
+        <div class="members">
+            <img src="/member1.jpeg" alt="">
+            <h3>Loren Dalf</h3>
+            <p>Chief Executive Officer</p>
+        </div>
+        <div class="members">
+            <img src="/member2.jpg" alt="">
+            <h3>Simon Dave</h3>
+            <p>Chief Technology Officer</p>
+        </div>
+        <div class="members">
+            <img src="/member3.jpeg" alt="">
+            <h3>Steve Berman</h3>
+            <p>Chief Financial Officer</p>
+        </div>
+        <div class="members">
+            <img src="/member4.jpg" alt="">
+            <h3>Oslo Nate</h3>
+            <p>Chief Marketing Officer</p>
+        </div>
+    </div>
+
+
+    <br><br><br><br>
+
+
+    <div class="progress-bar" id="work">
+        
+        <div class="bar-div">
+            <h5>Web Design</h5>
+            <div class="bar">
+                <div class="progress" style="width: 0px;text-align: end;color: white;padding-right: 5px;" data-progress="90%">90%</div>
+            </div>
+        </div>
+
+        <div class="bar-div">
+            <h5>Photoshop/Illustration</h5>
+            <div class="bar">
+                <div class="progress" style="width: 0px;text-align: end;color: white;padding-right: 5px;" data-progress="27%">27%</div>
+            </div>
+        </div>
+
+        <div class="bar-div">
+            <h5>Web Development</h5>
+            <div class="bar">
+                <div class="progress" style="width: 0px;text-align: end;color: white;padding-right: 5px;" data-progress="62%">62%</div>
+            </div>
+        </div>
+
+        <div class="bar-div">
+            <h5>Digital Marketing</h5>
+            <div class="bar">
+                <div class="progress" style="width: 0px;text-align: end;color: white;padding-right: 5px;" data-progress="34%">34%</div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <br><br><br><br>
+
+
+    <div id="responsiveTabsDemo" class="tab-box">
+        <ul class="tabs">
+            <li><a href="#tab-1">Creativity</a></li>
+            <li><a href="#tab-2">Strategy</a></li>
+            <li><a href="#tab-3">Design</a></li>
+            <li><a href="#tab-4">Development</a></li>
+        </ul>
+    
+        <div id="tab-1">
+            <h4>Creativity</h4>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui, ipsam? Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum corporis hic sapiente similique dolorum illo culpa veritatis quos exercitationem obcaecati.</p>
+        </div>
+        <div id="tab-2">
+            <h4>Strategy</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt similique sed esse ea vero!</p>
+        </div>
+        <div id="tab-3">
+            <h4>Design</h4>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium tempora impedit cum. Labore exercitationem dolore voluptate nesciunt nisi quibusdam animi!</p>
+        </div>
+        <div id="tab-4">
+            <h4>Development</h4>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui, ipsam? Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed labore vitae odio atque modi sunt saepe iusto! Nobis dicta modi perferendis quasi! Recusandae eos ea consequatur sit saepe, odit labore, non incidunt aut consectetur expedita laudantium, assumenda doloremque tenetur nostrum.</p>
+        </div>
+    </div>
+
+    
+    <br><br><br><br>
+
+
+    <div class="main-filter-box" id="services">
+
+        <div class="filter-buttons wow animate__slideInLeft"> <!-- wow is the animate.css animation when scrolled--> <!-- you can also add the attribute data-wow-duration='1s' -->
+            <button class="filter-btn active1" data-filter="*">All</button>
+            <button class="filter-btn" data-filter=".moon">Moon</button>
+            <button class="filter-btn" data-filter=".tree">Tree</button>
+            <button class="filter-btn" data-filter=".flower">Flower</button>
+            <button class="filter-btn" data-filter=".rainbow">Rainbow</button>
+        </div> <br>
+
+        <div class="container1">
+            <div class="grid-item tree">
+                <img href="/grid1.jpg" src="/grid1.jpg" title="add description">
+            </div>
+            <div class="grid-item flower">
+                <img href="/grid2.jpg" src="/grid2.jpg" title="add description">
+            </div>
+            <div class="grid-item moon">
+                <img href="/grid3.jpg" src="/grid3.jpg" title="add description">
+            </div>
+            <div class="grid-item rainbow">
+                <img href="/grid4.jpg" src="grid4.jpg" title="add description">
+            </div>
+            <div class="grid-item tree">
+                <img href="/grid1.jpg" src="/grid1.jpg" title="add description">
+            </div>
+            <div class="grid-item flower">
+                <img href="/grid2.jpg" src="/grid2.jpg" title="add description">
+            </div>
+            <div class="grid-item moon">
+                <img href="/grid3.jpg" src="/grid3.jpg" title="add description">
+            </div>
+            <div class="grid-item rainbow">
+                <img href="/grid4.jpg" src="/grid4.jpg" title="add description">
+            </div>
+            <div class="grid-item tree">
+                <img href="/grid1.jpg" src="/grid1.jpg" title="add description">
+            </div>
+        </div>
+
+    </div>
+
+
+    <br><br><br><br>
+
+
+    <div class="slide-box" id="blog">
+
+        <div class="slide" data-value='1'>
+            <h3>Carousel 1</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam nostrum ad nulla sunt eligendi veritatis, sapiente quibusdam iure quam inventore.</p>
+        </div>
+
+        <div class="slide" data-value='2'>
+            <h3>Carousel 2</h3>
+            <p>Lorem ipsum Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, quae? dolor sit, amet consectetur adipisicing elit. Quisquam nostrum ad nulla sunt eligendi veritatis, sapiente quibusdam iure quam inventore.</p>
+        </div>
+
+        <div class="slide" data-value='3'>
+            <h3>Carousel 3</h3>
+            <p>Lorem ipsum Lorem ipsum dolor sit amet. dolor sit, amet consectetur adipisicing elit. Quisquam nostrum ad nulla sunt eligendi veritatis, sapiente quibusdam iure quam inventore.</p>
+        </div>
+        
+        <br>
+        <div class="dots">
+            <div class="dot active2" data-value='1'></div>
+            <div class="dot" data-value='2'></div>
+            <div class="dot" data-value='3'></div>
+        </div>
+    </div>
+
+
+    <br><br><br><br>
+
+
+    <div class="counters" id="contact">
+        <div class="counter">1,254,532</div>
+        <div class="counter">2,547,621</div>
+        <div class="counter">5,856,136</div>
+    </div>
+
+
+    <br><br><br><br>
+
+
+    <div></div>
+
+
+    <script>
+
+        $(window).on('load',()=> {
+            $('.status').delay(200).fadeOut();
+            $('.preloader').delay(700).fadeOut();
+        })
+
+        $(document).ready(function(){
+            
+            $('.owl-carousel').owlCarousel({
+                items:1,
+                autoplay:true,
+                autoplayTimeout:3000,
+                smartSpeed:500,
+                loop:true,
+                autoplayHoverPause:true,
+                nav:true,
+                dots:true,
+                navText:['','']
+            });
+
+
+            $('.progress-bar').waypoint(
+                ()=>{
+                    $('.progress').each(function(){
+                        $(this).animate({
+                            width: $(this).attr('data-progress')
+                        },1000)
+                    })
+                    // this.destroy();
+
+                },
+                {
+                    offset:'bottom-in-view'
+                }
+            );
+            
+
+            $('#responsiveTabsDemo').responsiveTabs({
+                animation: 'slide'
+            });
+
+            $('.container1').isotope({});
+
+            // filter items on button click
+            $('.filter-buttons').on('click','button', function(){ //when you u click on a button in .filter-buttons division
+                var filterValue = $(this).attr('data-filter');
+                $('.container1').isotope({ filter: filterValue });
+                $('.filter-buttons').find('.active1').removeClass('active1'); //we call the whole filter btn container not the btn class itself, it finds things inside it better
+                $(this).addClass('active1')
+            });
+
+            $(function(){
+                $('.container1').magnificPopup({
+                    delegate: 'img', //it must have href attribute that links to the image
+                    type: 'image',
+                    gallery:{
+                        enabled:true
+                    }
+                })
+            })
+
+            var slides =  $('.slide');
+
+            
+            $('.slide').each(function(){
+                $(this).css('display','none')
+            })
+
+            $(slides[0]).show(1000);
+        
+
+            $('.dots').on('click','.dot',(e) => {
+                var number = $(e.target).attr('data-value');
+                $('.active2').removeClass('active2');
+                $(e.target).addClass('active2');
+                
+                $('.slide').each(function(){
+                    $(this).css('display','none')
+                })
+                $(slides[number-1]).slideDown();
+                
+            })
+
+            $('.counter').counterUp({
+                delay: 10,
+                time: 1000
+            })
+
+            $(window).scroll(() => {
+                if ($(window).scrollTop() >= 50){ //means the window is scroll 50px or more
+                    $('header').addClass('dark-header')
+                }
+                else $('header').removeClass('dark-header')
+            })
+
+            $('header').on('click','a',(e) => {
+                $('header a').each(function(){
+                    $(this).removeClass('active1')
+                })
+                $(e.target).addClass('active1')
+            })
+
+            $('.smooth-scroll').click(function(e){
+                // e.preventDefault();
+                var section_id = $(this).attr('href');
+                $('html, body').animate({
+                    scrollTop: $(section_id).offset().top // offset() returns the location of the section in html in pixels. and top gives the location of its top
+                },1000,'easeInOutExpo') //easeInOutExpo is the argument for the jquery easing plugin that creates scrolling animation
+            })
+
+            new WOW().init();
+            
+            
+        })
+
+
+
+    </script>
+    
+</body>
+</html>
